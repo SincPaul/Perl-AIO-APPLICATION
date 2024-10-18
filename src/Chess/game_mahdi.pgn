@@ -1,0 +1,9 @@
+[Event "Online Chess"]
+[Site "Sinc Chess"]
+[Date "1999.99.99"]
+[Round "1"]
+[White "Player 1"]
+[Black "Player 2"]
+[Result "1-0"]
+
+1. e4 a5 2. Nf3 Nf6 3. Bb5 c6 4. e5 Nd5 5. Ba4 Nb6 6. b3 Na6 7. d4 Nd5 8. Bg5 h6 9. Bh4 Nf4 10. Ng5 Nxg2+ 11. Kf1 hxg5 12. Qh5 Nf4 13. Qxh8 Ng6 14. Qh7 Nxh4 15. Rg1 Nc7 16. Rxg5 Nf3 17. Qh8 Ne6 18. Rg4 Qb6 19. Rxg7 Nxg7 20. Nc3 Qxd4 21. Bxc6 bxc6 22. Qxf8+ Kxf8 23. Nd5 Qxd5 24. Rd1 Nxh2+ 25. Kg1 Nf3+ 26. Kf1 Qxd1+ 27. Kg2 Qg1+ 28. Kxf3 Ba6 29. b4 axb4 30. a4 Nh5 31. a5 Rb8 32. c3 Rb5 33. e6 dxe6 34. cxb4 Rf5+ 35. Ke3 Qe1+ 36. Kd4 Rd5# 
