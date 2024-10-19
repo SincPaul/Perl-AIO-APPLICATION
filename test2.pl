@@ -1750,12 +1750,9 @@ sub create_right_gui {
 }
 
 sub show_friend_overlay {
-    my $overlay = $main->Toplevel();
-    $overlay->title("SINC Perl - Friends");
-    $overlay->geometry("350x300");
-
-    friend_utils::get_all_friends();
+    friend_utils::get_friends_list_uuids();
     friend_utils::get_friends_online_status();
+    friend_utils::display_friend_list($main);
 }
 
 

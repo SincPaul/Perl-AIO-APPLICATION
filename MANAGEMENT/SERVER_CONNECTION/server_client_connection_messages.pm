@@ -16,6 +16,20 @@ sub get_register_message {
     return $json_message;
 }
 
+sub get_login_message {
+    my ($username, $password_hash) = @_;
+
+    my $login_message = {
+        action   => "login",
+        username => $username,
+        hashed_pw => $password_hash,
+    };
+
+    my $json_message = encode_json($login_message);
+
+    return $json_message;
+}
+
 sub get_friend_list_uuids {
     my ($uuid, $session_id) = @_;
 
@@ -31,7 +45,7 @@ sub get_friend_list_uuids {
 }
 
 sub get_friends_data {
-    my ($uuid, $session_id) = @_;
+    my ($uuid, $session_id, @friends_uuids) = @_;
 
     my $friends_data = {
         action => "get_friends_data",
@@ -39,6 +53,8 @@ sub get_friends_data {
         session_id => $session_id,
         friends_uuids => \@friends_uuids,
     };
+
+    print("FRIENDS DATA: $friends_data\n");
 
     my $json_message = encode_json($friends_data);
 

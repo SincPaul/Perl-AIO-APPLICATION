@@ -1,7 +1,7 @@
 package session;
 
 my $UUID;
-
+my $SESSION_ID;
 
 sub set_uuid {
     my ($creation_uuid) = @_;
@@ -20,4 +20,19 @@ sub get_uuid {
     return $UUID;
 }
 
+sub get_session_id {
+    if (!defined $SESSION_ID) {
+        print("HACKA ALLART V2");
+        return undef;
+    }
+
+    return $SESSION_ID;
+}
+
+sub set_session_id {
+    my ($active_session_id) = @_;
+
+    $SESSION_ID = $active_session_id;
+    return;
+}
 1;

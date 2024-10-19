@@ -10,20 +10,13 @@ my $server_port = 12345;
 
 my ($mw, $select, $start_time, $label);
 
+my $connection_status_file = "MANAGEMENT/SERVER_CONNECTION/connection.json";
+
 sub connect_to_server {
     #my $server_ip = '217.248.106.198'; 
     #my $server_port = 12345;
-    $mw = MainWindow->new;
-    $mw->title("Establishing Connection");
-    print("TEST");
 
-    $frame = $mw->Frame()->pack();
-
-    $label = $frame->Label(
-        -text => "Trying to connect to server at $server_ip:$server_port",
-        -font => ['Arial', 14]
-    )->pack();
-    #create_connection_frame();
+    create_connection_frame();
 
     
 
@@ -66,10 +59,12 @@ sub create_connection_frame {
         -font => ['Arial', 14]
     )->pack();
 
-    $mw->update;  # Wait for the frame to be fully created and displayed
+    $mw->update;  
 }
 
 sub check_connection {  
+    create_connection_frame();
+
     my $elapsed_time = time() - $start_time;
     my $timeout = 5;
 
@@ -92,21 +87,25 @@ sub check_connection {
     $mw->after(100, \&check_connection);
 }
 sub set_connection_true {
-    my $file = "MANAGEMENT/SERVER_CONNECTION/connection.json";
-
-    open my $fh, '>', $file or die "Could not open file '$file' $!";
+    open my $fh, '>', $connection_status_file or die "Could not open connection_status_file '$connection_status_file' $!";
     print $fh encode_json({connected => 1});
     close $fh;
 }
 
 sub set_connection_false {
-    my $file = "MANAGEMENT/SERVER_CONNECTION/connection.json";
-
-    open my $fh, '>', $file or die "Could not open file '$file' $!";
+    open my $fh, '>', $connection_status_file or die "Could not open connection_status_file '$connection_status_file' $!";
     print $fh encode_json({connected => 0});
     close $fh;
 }
 
+sub get_connection_status {
+    open my $fh, '<', $connection_status_file or die "Could not open connection_status_file '$connection_status_file' $!";
+    my $json_text = <$fh>;
+    close $fh;
+    my $connection_status = decode_json($json_text);
+    return $connection_status->{connected};
+
+}
 sub get_server {
     return $server if $server;
 }
